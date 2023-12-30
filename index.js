@@ -5,48 +5,25 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(express.static('public'))
 
-app.get("/:nome/:lang",(req,res)=>{
-    var nome = req.params.nome;
-    var lang = req.params.lang
-    var exibirMsg = false
-
-    var produtos = [
-    {
-        nome:"Doritos",
-        preco:3.14
-    },
-    {
-        nome:"Banana",
-        preco:1.40
-    },
-    {
-        nome:"Carne",
-        preco:15.00
-    },
-    {
-        nome:"RedBull",
-        preco:6.00
-    },
-    {
-        nome:"Nescall",
-        preco:9.00
-    }
-
-
-    ]
-
-
+app.get("/",(req,res)=>{
+   
 
     res.render("index",{
-    nome:nome,
-    lang:lang,
-    empresa:"Paulo S.A",
-    inscritos:6000,
-    msg:exibirMsg,
-    produtos:produtos
+    
 });
 
 })
+
+app.get("/perguntar",(req,res) => {
+
+
+    res.render("perguntar",{
+
+    })
+
+})
+
+
 
 
 app.listen(80,()=>{
