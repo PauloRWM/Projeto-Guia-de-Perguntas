@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Guia perguntas</title>
+</head>
+<body>
+    <h1>Guia Perguntas!</h1>
+    <hr>
+    <h3>Lista de Pergutas</h3>
+   
+    <p> Nome: <%= nome  %>
+    <p> Linguagem Favorita: <%= lang %></p>
+    <p> Empresa: <%= empresa %> </p>
+    <p> Inscritos no canal: <%= inscritos %></p>
+
+    <% if (msg){%>
+        <h3>Isso é uma mensagem de Erro!</h3>
+  <%  } else { %>
+        <h3>Não encontramos erros!</h3>
+
+    <%}%>
+
+
+    <% produtos.forEach(function (produto) { %>
+           <h3> <%=produto.nome %> </h3>
+           <h4> <%=produto.preco %></h4>
+            <hr>
+          
+  <%  }) %>
+    <img src="/img/logo.webp">
+</body>
+</html>
