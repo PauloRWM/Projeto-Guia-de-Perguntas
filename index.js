@@ -1,10 +1,21 @@
 const express = require("express");
 const app = express();
+const bodyParser = require('body-parser');
+
+
+//Likando lib body-parser
+app.use(bodyParser.urlencoded({extended:false}))
+
+
+app.use(bodyParser.json())
+
 
 //Setando o EJS como engine!
 app.set('view engine', 'ejs');
 app.use(express.static('public'))
 
+
+//home 
 app.get("/",(req,res)=>{
    
 
@@ -13,7 +24,7 @@ app.get("/",(req,res)=>{
 });
 
 })
-
+//Exibe formulario de perguntas
 app.get("/perguntar",(req,res) => {
 
 
@@ -24,6 +35,14 @@ app.get("/perguntar",(req,res) => {
 })
 
 
+//salva perguntas enviadas no banco de dados
+app.post("/salvarPerguntas",(req, res)=>{
+    console.log(res.data)
+    res.send(`Formulario recebido! <br> Titulo:${req.body.titulo} <br> Descrição:${req.body.descricao}`);
+
+
+
+});
 
 
 app.listen(80,()=>{
