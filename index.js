@@ -1,13 +1,26 @@
 const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
+const connection = require('./database/database');
+
+//database
+connection
+    .authenticate()
+    .then(() => {
+        console.log("Conexão realizada com sucesso!")
+    }
+    )
+    .catch((msg) =>{
+    console.log(`Ocorreu um erro: ${msg}`)
+    })
+
 
 
 //Likando lib body-parser
-app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.urlencoded({extended:false}));
 
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 
 //Setando o EJS como engine!
