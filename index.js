@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
 const connection = require('./database/database');
-
+const PerguntaModel = require('./database/Perguntas');
 //database
 connection
     .authenticate()
