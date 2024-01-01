@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
 const connection = require('./database/database');
-const PerguntaModel = require('./database/Perguntas');
+const Pergunta = require('./database/Perguntas');
 //database
 connection
     .authenticate()
@@ -51,8 +51,15 @@ app.get("/perguntar",(req,res) => {
 //salva perguntas enviadas no banco de dados
 app.post("/salvarPerguntas",(req, res)=>{
     console.log(res.data)
-    res.send(`Formulario recebido! <br> Titulo:${req.body.titulo} <br> Descrição:${req.body.descricao}`);
+    Pergunta.create({
+        "titulo":req.body.titulo,
+        "descricao":req.body.descricao
+    }).then(()=>{
+        res.redirect("/");
 
+    }).catch ((erro)=>{
+        console.log(`Encontramos um erro:${error}`)
+    })
 
 
 });

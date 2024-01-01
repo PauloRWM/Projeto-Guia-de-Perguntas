@@ -20,3 +20,4 @@ Pergunta.sync({ force: false })
   .catch((error) => {
     console.log(`Ocorreu um erro ${error}`);
   });
+module.exports = Pergunta
