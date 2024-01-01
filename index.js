@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const connection = require('./database/database');
 const Pergunta = require('./database/Perguntas');
+
 //database
 connection
     .authenticate()
@@ -30,11 +31,13 @@ app.use(express.static('public'))
 
 //home 
 app.get("/",(req,res)=>{
-   
-
-    res.render("index",{
     
-});
+    Pergunta.findAll({ raw:true }).then(perguntas => {
+        res.render("index",{
+            perguntas:perguntas
+        })
+    })
+   
 
 })
 //Exibe formulario de perguntas
